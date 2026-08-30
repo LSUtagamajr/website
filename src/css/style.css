@@ -1711,6 +1711,10 @@ body.dark .cert-note:hover {
   background: #1877f2;
 }
 
+.channel-icon--instagram { 
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); 
+}
+
 .channel-icon--github {
   background: linear-gradient(135deg, #24292f, #000000);
 }
