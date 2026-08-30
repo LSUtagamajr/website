@@ -11,10 +11,10 @@
   --color-text-hero-p: #334155;
   --color-hero-span: #0f172a;
   --color-hero-img-border: #cbd5e1;
-  --color-navy-50: #f0fdf4;
-  --color-navy-100: #dcfce7;
-  --color-navy-600: #15803d;
-  --color-navy-700: #14532d;
+  --color-navy-50: #f0fdf5;
+  --color-navy-100: #dcfce9;
+  --color-navy-600: #10793d;
+  --color-navy-700: #0e4823;
   --color-muted: #64748b;
   --color-border: #cbd5e1;
   --color-card: rgba(255, 255, 255, 0.7);
@@ -28,14 +28,14 @@
 
   --color-dot: rgba(15, 23, 42, 0.5);
   --color-dot-lit: rgba(15, 23, 42, 0.9);
-  --color-accent-2: #3f7a5c;
-  --color-glow-1: rgba(21, 128, 61, 0.16);
-  --color-glow-2: rgba(21, 128, 61, 0.05);
-  --color-btn-primary-bg: linear-gradient(135deg, #15803d, #14532d);
-  --color-btn-primary-bg-hover: linear-gradient(135deg, #166534, #052e16);
+  --color-accent-2: #4a8664;
+  --color-glow-1: rgba(16, 121, 61, 0.16);
+  --color-glow-2: rgba(16, 121, 61, 0.05);
+  --color-btn-primary-bg: linear-gradient(135deg, #10793d, #0e4823);
+  --color-btn-primary-bg-hover: linear-gradient(135deg, #166536, #052e16);
   --color-btn-primary-text: #ffffff;
-  --color-btn-primary-border: #14532d;
-  --color-glow-tint: rgba(21, 128, 61, 0.35);
+  --color-btn-primary-border: #0e4823;
+  --color-glow-tint: rgba(16, 121, 61, 0.35);
 }
 
 body.dark {
@@ -47,10 +47,10 @@ body.dark {
   --color-text-hero-p: #cbd5e1;
   --color-hero-span: #f8fafc;
   --color-hero-img-border: transparent;
-  --color-navy-50: #14532d;
-  --color-navy-100: #166534;
-  --color-navy-600: #4ade80;
-  --color-navy-700: #86efac;
+  --color-navy-50: #14532e;
+  --color-navy-100: #166536;
+  --color-navy-600: #4ade86;
+  --color-navy-700: #86efb1;
   --color-muted: #94a3b8;
   --color-border: #1a1a1a;
   --color-card: #0a0a0a;
@@ -65,14 +65,14 @@ body.dark {
 
   --color-dot: rgba(255, 255, 255, 0.4);
   --color-dot-lit: rgba(255, 255, 255, 0.9);
-  --color-accent-2: #86efac;
-  --color-glow-1: rgba(74, 222, 128, 0.16);
-  --color-glow-2: rgba(74, 222, 128, 0.05);
-  --color-btn-primary-bg: linear-gradient(135deg, #22c55e, #15803d);
-  --color-btn-primary-bg-hover: linear-gradient(135deg, #4ade80, #16a34a);
+  --color-accent-2: #86efb1;
+  --color-glow-1: rgba(74, 222, 134, 0.16);
+  --color-glow-2: rgba(74, 222, 134, 0.05);
+  --color-btn-primary-bg: linear-gradient(135deg, #22c565, #10793d);
+  --color-btn-primary-bg-hover: linear-gradient(135deg, #4ade86, #16a350);
   --color-btn-primary-text: #ffffff;
-  --color-btn-primary-border: #16a34a;
-  --color-glow-tint: rgba(34, 197, 94, 0.4);
+  --color-btn-primary-border: #16a350;
+  --color-glow-tint: rgba(34, 197, 101, 0.4);
 }
 
 *, *::before, *::after {
@@ -188,9 +188,11 @@ img {
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-border) 50%, transparent);
+  background-color: var(--color-border);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 50%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 50%, transparent);
   opacity: 0.8;
-  transition: background var(--theme-switch-speed);
+  transition: background-color var(--theme-switch-speed);
 }
 
 .scroll-progress {
@@ -209,8 +211,8 @@ img {
   display: block;
   height: 100%;
   width: 0%;
-  background: var(--color-btn-primary-bg);
-  transition: width 0.12s linear, background var(--theme-switch-speed), box-shadow var(--theme-switch-speed);
+  background: var(--color-navy-600);
+  transition: width 0.12s linear, background-color var(--theme-switch-speed), box-shadow var(--theme-switch-speed);
   border-radius: 0 3px 3px 0;
 }
 
@@ -463,12 +465,15 @@ img {
   content: "";
   width: 20px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-navy-600));
-  transition: background var(--theme-switch-speed);
+  background-color: var(--color-navy-600);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000);
+  mask-image: linear-gradient(90deg, transparent, #000);
+  transition: background-color var(--theme-switch-speed);
 }
 
 .eyebrow-center::after {
-  background: linear-gradient(90deg, var(--color-navy-600), transparent);
+  -webkit-mask-image: linear-gradient(90deg, #000, transparent);
+  mask-image: linear-gradient(90deg, #000, transparent);
 }
 
 section {
@@ -539,11 +544,17 @@ section {
 .edu-item--current .edu-icon {
   border-color: var(--color-navy-600);
   box-shadow: 0 0 0 4px rgba(100, 116, 139, 0.18);
+  transition: border-color var(--theme-switch-speed);
 }
 
 .edu-icon svg {
   width: 18px;
   height: 18px;
+}
+
+.edu-icon--logo {
+  background: #ffffff;
+  transition: border-color var(--theme-switch-speed), box-shadow var(--theme-switch-speed);
 }
 
 .edu-icon--logo img {
@@ -719,6 +730,7 @@ section {
   height: 5px;
   border-radius: 50%;
   background: var(--color-navy-600);
+  transition: background var(--theme-switch-speed);
 }
 
 /* ---------- Now Playing / iTunes-style card ---------- */
@@ -750,11 +762,11 @@ section {
   opacity: 0;
   background: conic-gradient(
     from 0deg,
-    #16a34a,
-    #4ade80,
+    #16a350,
+    #4ade86,
     #052e16 35%,
-    #16a34a 65%,
-    #4ade80
+    #16a350 65%,
+    #4ade86
   );
   filter: blur(38px);
   transform: scale(0.85);
@@ -801,7 +813,7 @@ body.dark .music-card.is-playing .music-card-halo {
 .music-art-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #15803d, #052e16 85%);
+  background: linear-gradient(135deg, #10793d, #052e16 85%);
 }
 
 .music-art-img {
@@ -839,7 +851,7 @@ body.dark .music-card.is-playing .music-card-halo {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #16a34a;
+  color: #16a350;
   margin-bottom: 0.15rem;
   opacity: 0;
   transform: translateY(-2px);
@@ -879,7 +891,7 @@ body.dark .music-card.is-playing .music-card-halo {
   height: 42px;
   border-radius: 50%;
   border: none;
-  background: #16a34a;
+  background: #16a350;
   color: #ffffff;
   cursor: pointer;
   transition: transform var(--animate-hover-timing), background var(--animate-hover-timing);
@@ -887,7 +899,7 @@ body.dark .music-card.is-playing .music-card-halo {
 
 .music-play-btn:hover {
   transform: scale(1.06);
-  background: #22c55e;
+  background: #22c565;
 }
 
 .music-play-btn:active {
@@ -898,6 +910,7 @@ body.dark .music-card.is-playing .music-card-halo {
   background: var(--color-muted);
   cursor: not-allowed;
   opacity: 0.6;
+  transition: background var(--theme-switch-speed), transform var(--animate-hover-timing);
 }
 
 .music-play-btn:disabled:hover {
@@ -923,6 +936,7 @@ body.dark .music-card.is-playing .music-card-halo {
   border-radius: 999px;
   background: var(--color-pill-bg);
   overflow: hidden;
+  transition: background var(--theme-switch-speed);
 }
 
 .music-progress-fill {
@@ -932,7 +946,7 @@ body.dark .music-card.is-playing .music-card-halo {
   height: 100%;
   width: 0%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #16a34a, #4ade80);
+  background: linear-gradient(90deg, #16a350, #4ade86);
   transition: width 0.2s linear;
 }
 
@@ -1142,13 +1156,13 @@ body.dark .project-card:hover {
 }
 
 .project-tag--live {
-  background: rgba(22, 163, 74, 0.12);
-  color: #15803d;
+  background: rgba(16, 121, 61, 0.12);
+  color: #10793d;
 }
 
 body.dark .project-tag--live {
-  background: rgba(74, 222, 128, 0.15);
-  color: #4ade80;
+  background: rgba(74, 222, 134, 0.15);
+  color: #4ade86;
 }
 
 .project-tag--wip {
@@ -1219,6 +1233,7 @@ body.dark .project-tag--wip {
   font-weight: 500;
   color: var(--color-muted);
   cursor: default;
+  transition: color var(--theme-switch-speed);
 }
 
 .project-private-note i {
@@ -1263,6 +1278,7 @@ body.dark .project-tag--wip {
 .pricing-card--featured {
   border-color: var(--color-navy-600);
   box-shadow: 0 20px 45px -20px var(--color-glow-tint);
+  transition: background var(--theme-switch-speed), border-color var(--theme-switch-speed), transform var(--animate-hover-timing), box-shadow var(--animate-hover-timing);
 }
 
 .pricing-card--featured:hover {
@@ -1287,6 +1303,7 @@ body.dark .project-tag--wip {
 .pricing-badge--featured {
   background: var(--color-btn-primary-bg);
   color: var(--color-btn-primary-text);
+  transition: background var(--theme-switch-speed), color var(--theme-switch-speed);
 }
 
 .pricing-plan-name {
@@ -1336,6 +1353,7 @@ body.dark .project-tag--wip {
   color: var(--color-muted);
   align-self: flex-end;
   margin-bottom: 0.3rem;
+  transition: color var(--theme-switch-speed);
 }
 
 .pricing-note {
@@ -1704,7 +1722,7 @@ body.dark .cert-note:hover {
 }
 
 .channel-icon--email {
-  background: linear-gradient(135deg, #15803d, #052e16);
+  background: linear-gradient(135deg, #10793d, #052e16);
 }
 
 .channel-icon--facebook {
@@ -1750,7 +1768,7 @@ body.dark .cert-note:hover {
   font-size: 0.75rem;
   color: var(--color-muted);
   opacity: 0.6;
-  transition: transform var(--animate-hover-timing), opacity var(--animate-hover-timing);
+  transition: transform var(--animate-hover-timing), opacity var(--animate-hover-timing), color var(--theme-switch-speed);
 }
 
 .contact-form-card {
@@ -2069,7 +2087,7 @@ html.modal-open, body.modal-open {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 23, 42, 0.75);
+  background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: flex;
