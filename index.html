@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,8 +19,9 @@
 
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
@@ -36,7 +37,9 @@
           var saved = localStorage.getItem("theme");
           var isDark = saved === "dark";
           document.body.classList.toggle("dark", isDark);
-          document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+          document.documentElement.style.colorScheme = isDark
+            ? "dark"
+            : "light";
         } catch (e) {}
       })();
     </script>
@@ -69,7 +72,8 @@
             <h1>Hi, I'm <span>Rhodell</span></h1>
             <p class="hero-desc">
               A third-year BSIT student at La Salle University &mdash; Ozamiz,
-              passionate about building system applications that make an impact in today's digital world.
+              passionate about building system applications that make an impact
+              in today's digital world.
             </p>
             <div class="hero-actions">
               <a href="#projects" class="btn btn-primary">Review Works</a>
@@ -78,7 +82,11 @@
           </div>
 
           <div class="hero-image">
-            <img src="src/assets/images/hero-image.jpg" class="hero-avatar" alt="Rhodell Tagama" />
+            <img
+              src="src/assets/images/hero-image.jpg"
+              class="hero-avatar"
+              alt="Rhodell Tagama"
+            />
           </div>
         </div>
       </div>
@@ -88,7 +96,9 @@
       <div class="container">
         <div class="section-intro">
           <p class="eyebrow-center">Tech Stack</p>
-          <h2 class="section-title section-title--tight">Technologies I Work With</h2>
+          <h2 class="section-title section-title--tight">
+            Technologies I Work With
+          </h2>
           <p class="section-desc section-desc--narrow">
             A quick look at the languages, frameworks, and tools I use.
           </p>
@@ -137,6 +147,14 @@
             <i class="fa-solid fa-pen-nib ic-photoshop"></i>
             <span>Photoshop</span>
           </div>
+          <div class="tech-pill" title="Flutter" aria-hidden="true">
+            <i class="fa-brands fa-flutter ic-flutter"></i>
+            <span>Flutter</span>
+          </div>
+          <div class="tech-pill" title="Dart" aria-hidden="true">
+            <i class="fa-brands fa-dart-lang ic-dart"></i>
+            <span>Dart</span>
+          </div>
           <div class="tech-pill" title="Figma">
             <i class="fa-brands fa-figma ic-figma"></i>
             <span>Figma</span>
@@ -145,7 +163,6 @@
             <i class="fa-solid fa-palette ic-canva"></i>
             <span>Canva</span>
           </div>
-
           <div class="tech-pill" title="HTML5" aria-hidden="true">
             <i class="fa-brands fa-html5 ic-html"></i>
             <span>HTML</span>
@@ -186,6 +203,14 @@
             <i class="fa-solid fa-pen-nib ic-photoshop"></i>
             <span>Photoshop</span>
           </div>
+          <div class="tech-pill" title="Flutter" aria-hidden="true">
+            <i class="fa-brands fa-flutter ic-flutter"></i>
+            <span>Flutter</span>
+          </div>
+          <div class="tech-pill" title="Dart" aria-hidden="true">
+            <i class="fa-brands fa-dart-lang ic-dart"></i>
+            <span>Dart</span>
+          </div>
           <div class="tech-pill" title="Figma" aria-hidden="true">
             <i class="fa-brands fa-figma ic-figma"></i>
             <span>Figma</span>
@@ -197,7 +222,7 @@
         </div>
       </div>
     </section>
-    
+
     <section class="about-section" id="about">
       <div class="container">
         <div class="about-grid">
@@ -208,10 +233,15 @@
 
             <div class="bio-text">
               <p>
-                I'm a third-year BSIT student at La Salle University &mdash; Ozamiz who enjoys learning about web development and programming. I'm still exploring different areas of technology, but I especially enjoy building websites and applications.
+                I'm a third-year BSIT student at La Salle University &mdash;
+                Ozamiz who enjoys learning about web development and
+                programming. I'm still exploring different areas of technology,
+                but I especially enjoy building websites and applications.
               </p>
               <p>
-                I also like working on the creative side of things. I have a growing interest in graphic design, particularly creating and manipulating visuals to tell stories and bring ideas to life.
+                I also like working on the creative side of things. I have a
+                growing interest in graphic design, particularly creating and
+                manipulating visuals to tell stories and bring ideas to life.
               </p>
             </div>
           </div>
@@ -256,16 +286,26 @@
                   <div class="music-art" id="musicArt">
                     <div class="music-art-gradient"></div>
                     <img class="music-art-img" id="musicArtImg" alt="" hidden />
-                    <i class="fa-solid fa-music music-art-fallback" id="musicArtFallback"></i>
+                    <i
+                      class="fa-solid fa-music music-art-fallback"
+                      id="musicArtFallback"
+                    ></i>
                   </div>
                   <div class="music-meta">
                     <span class="music-eyebrow">
                       <i class="fa-brands fa-itunes-note"></i> Now Playing
                     </span>
-                    <h3 class="music-title" id="musicTitle">Somebody's Pleasure</h3>
+                    <h3 class="music-title" id="musicTitle">
+                      Somebody's Pleasure
+                    </h3>
                     <p class="music-artist" id="musicArtist">Aziz Hedra</p>
                   </div>
-                  <button class="music-play-btn" id="musicPlayBtn" type="button" aria-label="Play 30 second preview">
+                  <button
+                    class="music-play-btn"
+                    id="musicPlayBtn"
+                    type="button"
+                    aria-label="Play 30 second preview"
+                  >
                     <i class="fa-solid fa-play icon-play"></i>
                     <i class="fa-solid fa-pause icon-pause"></i>
                   </button>
@@ -276,7 +316,9 @@
                 </div>
                 <div class="music-time-row">
                   <span id="musicCurrentTime">0:00</span>
-                  <span class="music-time-label" id="musicTimeLabel">1:30 playback</span>
+                  <span class="music-time-label" id="musicTimeLabel"
+                    >1:30 playback</span
+                  >
                 </div>
 
                 <audio id="musicAudio" preload="none"></audio>
@@ -293,7 +335,8 @@
           <p class="eyebrow-center">Academic Background</p>
           <h2 class="section-title section-title--tight">Education</h2>
           <p class="section-desc section-desc--wide">
-            My schooling journey so far, from elementary through to my current degree.
+            My schooling journey so far, from elementary through to my current
+            degree.
           </p>
         </div>
 
@@ -311,7 +354,10 @@
 
           <div class="edu-item">
             <div class="edu-icon edu-icon--logo">
-              <img src="src/assets/images/ocsat.png" alt="La Salle University Logo" />
+              <img
+                src="src/assets/images/ocsat.png"
+                alt="La Salle University Logo"
+              />
             </div>
             <div class="edu-content">
               <span class="edu-stage">Junior High School</span>
@@ -322,23 +368,33 @@
 
           <div class="edu-item">
             <div class="edu-icon edu-icon--logo">
-              <img src="src/assets/images/ocsat.png" alt="Ozamiz City School of Arts and Trades Logo" />
+              <img
+                src="src/assets/images/ocsat.png"
+                alt="Ozamiz City School of Arts and Trades Logo"
+              />
             </div>
             <div class="edu-content">
               <span class="edu-stage">Senior High School</span>
               <h3>Ozamiz City School of Arts and Trades</h3>
-              <p class="edu-detail">TVL-ICT Strand &middot; Graduated With High Honors</p>
+              <p class="edu-detail">
+                TVL-ICT Strand &middot; Graduated With High Honors
+              </p>
             </div>
           </div>
 
           <div class="edu-item edu-item--current">
             <div class="edu-icon edu-icon--logo">
-              <img src="src/assets/images/lsu-seal-mono.png" alt="La Salle University Logo" />
+              <img
+                src="src/assets/images/lsu-seal-mono.png"
+                alt="La Salle University Logo"
+              />
             </div>
             <div class="edu-content">
               <span class="edu-stage">Current &middot; 3rd Year</span>
               <h3>La Salle University &ndash; Ozamiz</h3>
-              <p class="edu-detail">Bachelor of Science in Information Technology</p>
+              <p class="edu-detail">
+                Bachelor of Science in Information Technology
+              </p>
             </div>
           </div>
         </div>
@@ -357,7 +413,10 @@
         <div class="projects-grid">
           <div class="project-card">
             <div class="project-img-wrapper">
-              <img src="src/assets/images/Maximino.png" alt="Maximino Freedom Wall" />
+              <img
+                src="src/assets/images/Maximino.png"
+                alt="Maximino Freedom Wall"
+              />
             </div>
             <div class="project-body">
               <div class="project-tags">
@@ -368,9 +427,20 @@
                 </span>
               </div>
               <h3>Maximino</h3>
-              <p>A digital freedom wall created for thoughts that are difficult to say out loud. Users can leave anonymous messages, attach a song that represents their feelings, and share them with others who may relate.</p>
+              <p>
+                A digital freedom wall created for thoughts that are difficult
+                to say out loud. Users can leave anonymous messages, attach a
+                song that represents their feelings, and share them with others
+                who may relate.
+              </p>
               <div class="project-links">
-                <a href="https://maximino.vercel.app" class="live-demo-link" target="_blank" rel="noopener">Visit</a>
+                <a
+                  href="https://maximino.vercel.app"
+                  class="live-demo-link"
+                  target="_blank"
+                  rel="noopener"
+                  >Visit</a
+                >
               </div>
             </div>
           </div>
@@ -387,9 +457,15 @@
                 </span>
               </div>
               <h3>BOOST</h3>
-              <p>A  Procurement and Order Operations System with OCR-Enabled Mobile Document Scanning.</p>
+              <p>
+                A Procurement and Order Operations System with OCR-Enabled
+                Mobile Document Scanning.
+              </p>
               <div class="project-links">
-                <span class="project-private-note" title="Built for a specific client — not publicly accessible">
+                <span
+                  class="project-private-note"
+                  title="Built for a specific client — not publicly accessible"
+                >
                   <i class="fa-solid fa-lock"></i> Private client system
                 </span>
               </div>
@@ -405,7 +481,8 @@
           <p class="eyebrow-center">Rates</p>
           <h2 class="section-title section-title--tight">Pricing</h2>
           <p class="section-desc section-desc--wide">
-            Affordable rates for students, small businesses, and personal projects.
+            Affordable rates for students, small businesses, and personal
+            projects.
           </p>
         </div>
 
@@ -413,40 +490,57 @@
           <div class="pricing-card">
             <span class="pricing-badge">Starter</span>
             <h3 class="pricing-plan-name">Landing Page / Portfolio</h3>
-            <p class="pricing-plan-desc">A simple website for a personal portfolio, business, or project.</p>
+            <p class="pricing-plan-desc">
+              A simple website for a personal portfolio, business, or project.
+            </p>
 
             <div class="pricing-amount">
               <span class="pricing-currency">&#8369;</span>
               <span class="pricing-value">1,500</span>
               <span class="pricing-suffix">starting</span>
             </div>
-            <p class="pricing-note">Final price depends on scope &mdash; happy to give a free quote first.</p>
+            <p class="pricing-note">
+              Final price depends on scope &mdash; happy to give a free quote
+              first.
+            </p>
 
             <ul class="pricing-features">
               <li><i class="fa-solid fa-check"></i> 1&ndash;3 sections</li>
               <li><i class="fa-solid fa-check"></i> Responsive design</li>
-              <li><i class="fa-solid fa-check"></i> Contact form &amp; social links</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Contact form &amp; social
+                links
+              </li>
               <li><i class="fa-solid fa-check"></i> 2 rounds of revisions</li>
               <li><i class="fa-solid fa-check"></i> 3&ndash;5 days delivery</li>
             </ul>
           </div>
 
           <div class="pricing-card pricing-card--featured">
-            <span class="pricing-badge pricing-badge--featured">Most Popular</span>
+            <span class="pricing-badge pricing-badge--featured"
+              >Most Popular</span
+            >
             <h3 class="pricing-plan-name">Multi-Page Web App</h3>
-            <p class="pricing-plan-desc">For school projects, business websites, and web applications.</p>
+            <p class="pricing-plan-desc">
+              For school projects, business websites, and web applications.
+            </p>
 
             <div class="pricing-amount">
               <span class="pricing-currency">&#8369;</span>
               <span class="pricing-value">3,500</span>
               <span class="pricing-suffix">starting</span>
             </div>
-            <p class="pricing-note">Final price depends on scope &mdash; happy to give a free quote first.</p>
+            <p class="pricing-note">
+              Final price depends on scope &mdash; happy to give a free quote
+              first.
+            </p>
 
             <ul class="pricing-features">
               <li><i class="fa-solid fa-check"></i> Multiple pages</li>
               <li><i class="fa-solid fa-check"></i> Backend &amp; database</li>
-              <li><i class="fa-solid fa-check"></i> Simple and Responsive design</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Simple and Responsive design
+              </li>
               <li><i class="fa-solid fa-check"></i> Deployment</li>
               <li><i class="fa-solid fa-check"></i> Revisions included</li>
             </ul>
@@ -455,18 +549,31 @@
           <div class="pricing-card">
             <span class="pricing-badge">Custom</span>
             <h3 class="pricing-plan-name">Custom / Ongoing Project</h3>
-            <p class="pricing-plan-desc">For larger projects or features that need more development time.</p>
+            <p class="pricing-plan-desc">
+              For larger projects or features that need more development time.
+            </p>
 
             <div class="pricing-amount">
               <span class="pricing-value pricing-value--quote">Let's talk</span>
             </div>
-            <p class="pricing-note">Priced per project after a quick scope call &mdash; no fixed rate to keep it fair.</p>
+            <p class="pricing-note">
+              Priced per project after a quick scope call &mdash; no fixed rate
+              to keep it fair.
+            </p>
 
             <ul class="pricing-features">
-              <li><i class="fa-solid fa-check"></i> Project requirements discussion</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Project requirements
+                discussion
+              </li>
               <li><i class="fa-solid fa-check"></i> Custom features</li>
-              <li><i class="fa-solid fa-check"></i> Milestone-based payments</li>
-              <li><i class="fa-solid fa-check"></i> Maintenance and support available</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Milestone-based payments
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Maintenance and support
+                available
+              </li>
             </ul>
           </div>
         </div>
@@ -478,9 +585,18 @@
         <p class="eyebrow-center">Achievements</p>
         <h2 class="section-title">Certifications</h2>
         <div class="cert-grid">
-          <div class="cert-note" data-cert="ncii-modal" role="button" tabindex="0" aria-haspopup="dialog">
+          <div
+            class="cert-note"
+            data-cert="ncii-modal"
+            role="button"
+            tabindex="0"
+            aria-haspopup="dialog"
+          >
             <div class="cert-note-image">
-              <img src="src/assets/images/ncii-certificate.jpg" alt="TESDA CSS NCII Certificate" />
+              <img
+                src="src/assets/images/ncii-certificate.jpg"
+                alt="TESDA CSS NCII Certificate"
+              />
             </div>
             <div class="cert-note-badge">
               <svg
@@ -507,11 +623,22 @@
       </div>
     </section>
 
-    <div id="ncii-modal" class="cert-modal-overlay" role="dialog" aria-modal="true" aria-label="CSS NCII Certificate preview">
+    <div
+      id="ncii-modal"
+      class="cert-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="CSS NCII Certificate preview"
+    >
       <div class="cert-modal-wrapper">
-        <button class="cert-modal-close" aria-label="Close preview">&times;</button>
+        <button class="cert-modal-close" aria-label="Close preview">
+          &times;
+        </button>
         <div class="cert-modal-body">
-          <img src="src/assets/images/ncii-certificate.jpg" alt="TESDA CSS NCII Certificate" />
+          <img
+            src="src/assets/images/ncii-certificate.jpg"
+            alt="TESDA CSS NCII Certificate"
+          />
         </div>
       </div>
     </div>
@@ -531,7 +658,8 @@
             <p class="eyebrow-left">Channels</p>
             <h3 class="contact-channels-title">Find me online</h3>
             <p class="contact-channels-desc">
-              Reach out through any of my platforms or send a direct message. I usually respond within 1&ndash;2 days.
+              Reach out through any of my platforms or send a direct message. I
+              usually respond within 1&ndash;2 days.
             </p>
 
             <div class="channel-list">
@@ -567,7 +695,7 @@
                 <i class="fa-solid fa-chevron-right channel-arrow"></i>
               </a>
 
-                <a
+              <a
                 class="channel-item"
                 href="https://www.instagram.com/devwithdel/"
                 target="_blank"
@@ -672,7 +800,9 @@
 
             <p class="form-powered-by">
               Powered by
-              <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a>
+              <a href="https://formspree.io" target="_blank" rel="noopener"
+                >Formspree</a
+              >
             </p>
           </div>
         </div>
@@ -683,7 +813,9 @@
       <div class="container footer-inner">
         <p>&copy; 2026 Rhodell A. Tagama Jr.</p>
         <div class="La Salle University - Ozamiz">
-          <a href="https://lsu.edu.ph/" target="_blank" rel="noopener">La Salle University - Ozamiz</a>
+          <a href="https://lsu.edu.ph/" target="_blank" rel="noopener"
+            >La Salle University - Ozamiz</a
+          >
         </div>
       </div>
     </footer>

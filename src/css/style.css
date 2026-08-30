@@ -1059,7 +1059,9 @@ body.dark .music-card.is-playing .music-card-halo {
 .ic-python { color: #3776ab; }
 .ic-java { color: #007396; }
 .ic-cpp { color: #00599c; }
-.ic-photoshop { color: #31a8ff; }
+.ic-photoshop { color: #31a8ff; }\
+.ic-flutter { color: #02569b; }
+.ic-dart { color: #0175c2; }
 .ic-figma { color: #f24e1e; }
 .ic-canva { color: #00c4cc; }
 
