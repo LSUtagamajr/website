@@ -1,0 +1,21 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "This is the official website portfolio of Rhodell A. Tagama Jr., a 3rd year BSIT student at La Salle University - Ozamiz whos excellence expands at developing and creating innovations that could help resolve real-world problem.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LSUtagamajr/Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LSUtagamajr/Website/issues"
+  },
+  "homepage": "https://github.com/LSUtagamajr/Website#readme"
+}

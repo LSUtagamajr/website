@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Del</title>
+    <meta
+      name="description"
+      content="Personal portfolio of Rhodell A. Tagama Jr., a third-year BSIT student and aspiring developer at La Salle University - Ozamiz."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href="src/assets/images/favicon.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="src/css/style.css?v=1.8" />
+  </head>
+  <body>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var isDark = saved === "dark";
+          document.body.classList.toggle("dark", isDark);
+          document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+        } catch (e) {}
+      })();
+    </script>
+    <div class="portfolio-ambient-bg"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="#home">
+          <img src="src/assets/images/logo.png" alt="Logo" />
+          <p class="nav-brand-text">DEL</p>
+        </a>
+        <div class="nav-actions">
+          <button class="theme-btn" aria-label="Toggle Theme">
+            <i class="mode-icon" data-lucide="moon"></i>
+          </button>
+        </div>
+      </div>
+      <div class="scroll-progress" aria-hidden="true">
+        <span class="scroll-progress-fill" id="scrollProgressFill"></span>
+      </div>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <p class="eyebrow">BSIT Student &amp; Developer</p>
+            <h1>Hi, I'm <span>Rhodell</span></h1>
+            <p class="hero-desc">
+              A third-year BSIT student at La Salle University &mdash; Ozamiz,
+              passionate about building system applications that make an impact in today's digital world.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">Review Works</a>
+              <a href="#contact" class="btn btn-outline">Message Me</a>
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <img src="src/assets/images/hero-image.jpg" class="hero-avatar" alt="Rhodell Tagama" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <div class="container">
+        <div class="section-intro">
+          <p class="eyebrow-center">Tech Stack</p>
+          <h2 class="section-title section-title--tight">Technologies I Work With</h2>
+          <p class="section-desc section-desc--narrow">
+            A quick look at the languages, frameworks, and tools I use.
+          </p>
+        </div>
+      </div>
+
+      <div class="tech-marquee" aria-label="Technologies I use, scrolling list">
+        <div class="tech-marquee-track">
+          <div class="tech-pill" title="HTML5">
+            <i class="fa-brands fa-html5 ic-html"></i>
+            <span>HTML</span>
+          </div>
+          <div class="tech-pill" title="CSS3">
+            <i class="fa-brands fa-css3-alt ic-css"></i>
+            <span>CSS</span>
+          </div>
+          <div class="tech-pill" title="JavaScript">
+            <i class="fa-brands fa-js ic-js"></i>
+            <span>JavaScript</span>
+          </div>
+          <div class="tech-pill" title="React">
+            <i class="fa-brands fa-react ic-react"></i>
+            <span>React</span>
+          </div>
+          <div class="tech-pill" title="Bootstrap">
+            <i class="fa-brands fa-bootstrap ic-bootstrap"></i>
+            <span>Bootstrap</span>
+          </div>
+          <div class="tech-pill" title="Tailwind CSS">
+            <i class="fa-brands fa-css3 ic-tailwind"></i>
+            <span>Tailwind CSS</span>
+          </div>
+          <div class="tech-pill" title="Python">
+            <i class="fa-brands fa-python ic-python"></i>
+            <span>Python</span>
+          </div>
+          <div class="tech-pill" title="Java">
+            <i class="fa-brands fa-java ic-java"></i>
+            <span>Java</span>
+          </div>
+          <div class="tech-pill" title="C++">
+            <i class="fa-solid fa-code ic-cpp"></i>
+            <span>C++</span>
+          </div>
+          <div class="tech-pill" title="Photoshop">
+            <i class="fa-solid fa-pen-nib ic-photoshop"></i>
+            <span>Photoshop</span>
+          </div>
+          <div class="tech-pill" title="Figma">
+            <i class="fa-brands fa-figma ic-figma"></i>
+            <span>Figma</span>
+          </div>
+          <div class="tech-pill" title="Canva">
+            <i class="fa-solid fa-palette ic-canva"></i>
+            <span>Canva</span>
+          </div>
+
+          <div class="tech-pill" title="HTML5" aria-hidden="true">
+            <i class="fa-brands fa-html5 ic-html"></i>
+            <span>HTML</span>
+          </div>
+          <div class="tech-pill" title="CSS3" aria-hidden="true">
+            <i class="fa-brands fa-css3-alt ic-css"></i>
+            <span>CSS</span>
+          </div>
+          <div class="tech-pill" title="JavaScript" aria-hidden="true">
+            <i class="fa-brands fa-js ic-js"></i>
+            <span>JavaScript</span>
+          </div>
+          <div class="tech-pill" title="React" aria-hidden="true">
+            <i class="fa-brands fa-react ic-react"></i>
+            <span>React</span>
+          </div>
+          <div class="tech-pill" title="Bootstrap" aria-hidden="true">
+            <i class="fa-brands fa-bootstrap ic-bootstrap"></i>
+            <span>Bootstrap</span>
+          </div>
+          <div class="tech-pill" title="Tailwind CSS" aria-hidden="true">
+            <i class="fa-brands fa-css3 ic-tailwind"></i>
+            <span>Tailwind CSS</span>
+          </div>
+          <div class="tech-pill" title="Python" aria-hidden="true">
+            <i class="fa-brands fa-python ic-python"></i>
+            <span>Python</span>
+          </div>
+          <div class="tech-pill" title="Java" aria-hidden="true">
+            <i class="fa-brands fa-java ic-java"></i>
+            <span>Java</span>
+          </div>
+          <div class="tech-pill" title="C++" aria-hidden="true">
+            <i class="fa-solid fa-code ic-cpp"></i>
+            <span>C++</span>
+          </div>
+          <div class="tech-pill" title="Photoshop" aria-hidden="true">
+            <i class="fa-solid fa-pen-nib ic-photoshop"></i>
+            <span>Photoshop</span>
+          </div>
+          <div class="tech-pill" title="Figma" aria-hidden="true">
+            <i class="fa-brands fa-figma ic-figma"></i>
+            <span>Figma</span>
+          </div>
+          <div class="tech-pill" title="Canva" aria-hidden="true">
+            <i class="fa-solid fa-palette ic-canva"></i>
+            <span>Canva</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-info-block">
+            <p class="eyebrow">About Me</p>
+            <h2 class="bio-name">Rhodell Tagama</h2>
+            <p class="bio-subtitle">BSIT Student &amp; Developer</p>
+
+            <div class="bio-text">
+              <p>
+                I'm a third-year BSIT student at La Salle University &mdash; Ozamiz who enjoys learning about web development and programming. I'm still exploring different areas of technology, but I especially enjoy building websites and applications.
+              </p>
+              <p>
+                I also like working on the creative side of things. I have a growing interest in graphic design, particularly creating and manipulating visuals to tell stories and bring ideas to life.
+              </p>
+            </div>
+          </div>
+
+          <div class="about-cards-stack">
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 2v20" />
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+              </div>
+              <div class="info-card-content">
+                <h3>Interests</h3>
+                <ul class="interest-list">
+                  <li>Web Development</li>
+                  <li>UI/UX</li>
+                  <li>Open-source</li>
+                  <li>AI &amp; ML</li>
+                  <li>API Integration</li>
+                  <li>Game Development</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="music-card-wrap">
+              <div class="music-card" id="musicCard">
+                <div class="music-card-halo" aria-hidden="true"></div>
+
+                <div class="music-card-top">
+                  <div class="music-art" id="musicArt">
+                    <div class="music-art-gradient"></div>
+                    <img class="music-art-img" id="musicArtImg" alt="" hidden />
+                    <i class="fa-solid fa-music music-art-fallback" id="musicArtFallback"></i>
+                  </div>
+                  <div class="music-meta">
+                    <span class="music-eyebrow">
+                      <i class="fa-brands fa-itunes-note"></i> Now Playing
+                    </span>
+                    <h3 class="music-title" id="musicTitle">Somebody's Pleasure</h3>
+                    <p class="music-artist" id="musicArtist">Aziz Hedra</p>
+                  </div>
+                  <button class="music-play-btn" id="musicPlayBtn" type="button" aria-label="Play 30 second preview">
+                    <i class="fa-solid fa-play icon-play"></i>
+                    <i class="fa-solid fa-pause icon-pause"></i>
+                  </button>
+                </div>
+
+                <div class="music-progress" id="musicProgressTrack">
+                  <div class="music-progress-fill" id="musicProgressFill"></div>
+                </div>
+                <div class="music-time-row">
+                  <span id="musicCurrentTime">0:00</span>
+                  <span class="music-time-label" id="musicTimeLabel">1:30 playback</span>
+                </div>
+
+                <audio id="musicAudio" preload="none"></audio>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="education-section" id="education">
+      <div class="container">
+        <div class="section-intro">
+          <p class="eyebrow-center">Academic Background</p>
+          <h2 class="section-title section-title--tight">Education</h2>
+          <p class="section-desc section-desc--wide">
+            My schooling journey so far, from elementary through to my current degree.
+          </p>
+        </div>
+
+        <div class="edu-timeline">
+          <div class="edu-item">
+            <div class="edu-icon">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <div class="edu-content">
+              <span class="edu-stage">Elementary</span>
+              <h3>Bacolod Elementary School</h3>
+              <p class="edu-detail">Graduated Valedictorian</p>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-icon">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <div class="edu-content">
+              <span class="edu-stage">Junior High School</span>
+              <h3>Ozamiz City School of Arts and Trades</h3>
+              <p class="edu-detail">Graduated With Honors</p>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-icon">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <div class="edu-content">
+              <span class="edu-stage">Senior High School</span>
+              <h3>Ozamiz City School of Arts and Trades</h3>
+              <p class="edu-detail">TVL-ICT Strand &middot; Graduated With High Honors</p>
+            </div>
+          </div>
+
+          <div class="edu-item edu-item--current">
+            <div class="edu-icon edu-icon--logo">
+              <img src="src/assets/images/lsu-seal-mono.png" alt="La Salle University Logo" />
+            </div>
+            <div class="edu-content">
+              <span class="edu-stage">Current &middot; 3rd Year</span>
+              <h3>La Salle University &ndash; Ozamiz</h3>
+              <p class="edu-detail">Bachelor of Science in Information Technology</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+      <div class="container">
+        <div class="section-intro">
+          <p class="eyebrow-center">My Work</p>
+          <h2 class="section-title section-title--tight">Projects</h2>
+          <p class="section-desc section-desc--wide">
+            A collection of my recent projects, and previous works.
+          </p>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-img-wrapper">
+              <img src="src/assets/images/Maximino.png" alt="Maximino Freedom Wall" />
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">Web Application</span>
+                <span class="project-tag project-tag--live">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  Deployed
+                </span>
+              </div>
+              <h3>Maximino</h3>
+              <p>A digital freedom wall created for thoughts that are difficult to say out loud. Users can leave anonymous messages, attach a song that represents their feelings, and share them with others who may relate.</p>
+              <div class="project-links">
+                <a href="https://maximino.vercel.app" class="live-demo-link" target="_blank" rel="noopener">Visit</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-img-wrapper">
+              <img src="src/assets/images/BOOST_LOGO1.png" alt="Project Two" />
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">Web Application</span>
+                <span class="project-tag project-tag--wip">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  Work in Progress
+                </span>
+              </div>
+              <h3>BOOST</h3>
+              <p>A  Procurement and Order Operations System with OCR-Enabled Mobile Document Scanning.</p>
+              <div class="project-links">
+                <span class="project-private-note" title="Built for a specific client — not publicly accessible">
+                  <i class="fa-solid fa-lock"></i> Private client system
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+      <div class="container">
+        <div class="section-intro">
+          <p class="eyebrow-center">Rates</p>
+          <h2 class="section-title section-title--tight">Pricing</h2>
+          <p class="section-desc section-desc--wide">
+            Affordable rates for students, small businesses, and personal projects.
+          </p>
+        </div>
+
+        <div class="pricing-wrap">
+          <div class="pricing-card">
+            <span class="pricing-badge">Starter</span>
+            <h3 class="pricing-plan-name">Landing Page / Portfolio</h3>
+            <p class="pricing-plan-desc">A simple website for a personal portfolio, business, or project.</p>
+
+            <div class="pricing-amount">
+              <span class="pricing-currency">&#8369;</span>
+              <span class="pricing-value">1,500</span>
+              <span class="pricing-suffix">starting</span>
+            </div>
+            <p class="pricing-note">Final price depends on scope &mdash; happy to give a free quote first.</p>
+
+            <ul class="pricing-features">
+              <li><i class="fa-solid fa-check"></i> 1&ndash;3 sections</li>
+              <li><i class="fa-solid fa-check"></i> Responsive design</li>
+              <li><i class="fa-solid fa-check"></i> Contact form &amp; social links</li>
+              <li><i class="fa-solid fa-check"></i> 2 rounds of revisions</li>
+              <li><i class="fa-solid fa-check"></i> 3&ndash;5 days delivery</li>
+            </ul>
+          </div>
+
+          <div class="pricing-card pricing-card--featured">
+            <span class="pricing-badge pricing-badge--featured">Most Popular</span>
+            <h3 class="pricing-plan-name">Multi-Page Web App</h3>
+            <p class="pricing-plan-desc">For school projects, business websites, and web applications.</p>
+
+            <div class="pricing-amount">
+              <span class="pricing-currency">&#8369;</span>
+              <span class="pricing-value">3,500</span>
+              <span class="pricing-suffix">starting</span>
+            </div>
+            <p class="pricing-note">Final price depends on scope &mdash; happy to give a free quote first.</p>
+
+            <ul class="pricing-features">
+              <li><i class="fa-solid fa-check"></i> Multiple pages</li>
+              <li><i class="fa-solid fa-check"></i> Backend &amp; database</li>
+              <li><i class="fa-solid fa-check"></i> Simple and Responsive design</li>
+              <li><i class="fa-solid fa-check"></i> Deployment</li>
+              <li><i class="fa-solid fa-check"></i> Revisions included</li>
+            </ul>
+          </div>
+
+          <div class="pricing-card">
+            <span class="pricing-badge">Custom</span>
+            <h3 class="pricing-plan-name">Custom / Ongoing Project</h3>
+            <p class="pricing-plan-desc">For larger projects or features that need more development time.</p>
+
+            <div class="pricing-amount">
+              <span class="pricing-value pricing-value--quote">Let's talk</span>
+            </div>
+            <p class="pricing-note">Priced per project after a quick scope call &mdash; no fixed rate to keep it fair.</p>
+
+            <ul class="pricing-features">
+              <li><i class="fa-solid fa-check"></i> Project requirements discussion</li>
+              <li><i class="fa-solid fa-check"></i> Custom features</li>
+              <li><i class="fa-solid fa-check"></i> Milestone-based payments</li>
+              <li><i class="fa-solid fa-check"></i> Maintenance and support available</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="certifications-section">
+      <div class="container">
+        <p class="eyebrow-center">Achievements</p>
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-grid">
+          <div class="cert-note" data-cert="ncii-modal" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="cert-note-image">
+              <img src="src/assets/images/ncii-certificate.jpg" alt="TESDA CSS NCII Certificate" />
+            </div>
+            <div class="cert-note-badge">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"
+                />
+              </svg>
+            </div>
+            <div class="cert-note-info">
+              <h3>CSS NCII Holder</h3>
+              <p class="cert-issuer">Issued by TESDA</p>
+              <p class="cert-date">Earned: July 10, 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="ncii-modal" class="cert-modal-overlay" role="dialog" aria-modal="true" aria-label="CSS NCII Certificate preview">
+      <div class="cert-modal-wrapper">
+        <button class="cert-modal-close" aria-label="Close preview">&times;</button>
+        <div class="cert-modal-body">
+          <img src="src/assets/images/ncii-certificate.jpg" alt="TESDA CSS NCII Certificate" />
+        </div>
+      </div>
+    </div>
+
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="section-intro section-intro--lg">
+          <p class="eyebrow-center">Get in Touch</p>
+          <h2 class="section-title section-title--tight">Contact Me</h2>
+          <p class="section-desc section-desc--narrow">
+            Questions, project ideas, or just want to say hi?
+          </p>
+        </div>
+
+        <div class="contact-grid contact-grid--split">
+          <div class="contact-channels">
+            <p class="eyebrow-left">Channels</p>
+            <h3 class="contact-channels-title">Find me online</h3>
+            <p class="contact-channels-desc">
+              Reach out through any of my platforms or send a direct message. I usually respond within 1&ndash;2 days.
+            </p>
+
+            <div class="channel-list">
+              <a
+                class="channel-item"
+                href="mailto:tagamarhodelljunior@gmail.com"
+                title="Email Me Directly"
+              >
+                <span class="channel-icon channel-icon--email">
+                  <i class="fa-solid fa-envelope"></i>
+                </span>
+                <span class="channel-text">
+                  <span class="channel-name">Email</span>
+                  <span class="channel-sub">tagamarhodelljunior@gmail.com</span>
+                </span>
+                <i class="fa-solid fa-chevron-right channel-arrow"></i>
+              </a>
+
+              <a
+                class="channel-item"
+                href="https://www.facebook.com/tagamarhodelljr/"
+                target="_blank"
+                rel="noopener"
+                title="Facebook Profile"
+              >
+                <span class="channel-icon channel-icon--facebook">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </span>
+                <span class="channel-text">
+                  <span class="channel-name">Facebook</span>
+                  <span class="channel-sub">tagamarhodelljr</span>
+                </span>
+                <i class="fa-solid fa-chevron-right channel-arrow"></i>
+              </a>
+
+                <a
+                class="channel-item"
+                href="https://www.instagram.com/devwithdel/"
+                target="_blank"
+                rel="noopener"
+                title="Instagram Profile"
+              >
+                <span class="channel-icon channel-icon--instagram">
+                  <i class="fa-brands fa-instagram"></i>
+                </span>
+                <span class="channel-text">
+                  <span class="channel-name">Instagram</span>
+                  <span class="channel-sub">devwithdel</span>
+                </span>
+                <i class="fa-solid fa-chevron-right channel-arrow"></i>
+              </a>
+
+              <a
+                class="channel-item"
+                href="https://github.com/LSUtagamajr"
+                target="_blank"
+                rel="noopener"
+                title="GitHub Profile"
+              >
+                <span class="channel-icon channel-icon--github">
+                  <i class="fa-brands fa-github"></i>
+                </span>
+                <span class="channel-text">
+                  <span class="channel-name">GitHub</span>
+                  <span class="channel-sub">LSUtagamajr</span>
+                </span>
+                <i class="fa-solid fa-chevron-right channel-arrow"></i>
+              </a>
+
+              <a
+                class="channel-item"
+                href="https://linkedin.com/in/rhodelltagamajr"
+                target="_blank"
+                rel="noopener"
+                title="LinkedIn Network"
+              >
+                <span class="channel-icon channel-icon--linkedin">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </span>
+                <span class="channel-text">
+                  <span class="channel-name">LinkedIn</span>
+                  <span class="channel-sub">rhodelltagamajr</span>
+                </span>
+                <i class="fa-solid fa-chevron-right channel-arrow"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form-card">
+            <p class="eyebrow-left">Direct Message</p>
+            <h3 class="contact-form-title">Send me a message</h3>
+
+            <form action="https://formspree.io/f/mykawbdw" method="POST">
+              <div class="field-row">
+                <div class="field">
+                  <label for="name">Name <span class="req">*</span></label>
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="email">Email <span class="req">*</span></label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <label for="subject">Subject</label>
+                <input
+                  id="subject"
+                  type="text"
+                  name="subject"
+                  placeholder="What's this about?"
+                />
+              </div>
+              <div class="field">
+                <label for="message">Message <span class="req">*</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Write your message here..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                <i class="fa-solid fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+
+            <p class="form-powered-by">
+              Powered by
+              <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footer-inner">
+        <p>&copy; 2026 Rhodell A. Tagama Jr.</p>
+        <div class="La Salle University - Ozamiz">
+          <a href="https://lsu.edu.ph/" target="_blank" rel="noopener">La Salle University - Ozamiz</a>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top" title="Back to top">
+      <i data-lucide="arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="src/js/script.js"></script>
+  </body>
+</html>
