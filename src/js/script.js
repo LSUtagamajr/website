@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const artFallback = document.querySelector("#musicArtFallback");
 
     
-    const CHOSEN_TRACK_QUERY = "Aziz Hedra Somebody's Pleasure";
+    const CHOSEN_TRACK_QUERY = "Guy Sebastian Angels Brought Me Here";
 
     const TARGET_SECONDS = 90; 
     let clipDuration = 0; 
@@ -382,8 +382,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const artwork = upscaleArtwork(track.artworkUrl100);
 
-      if (titleEl) titleEl.textContent = track.trackName || "Somebody's Pleasure";
-      if (artistEl) artistEl.textContent = track.artistName || "Aziz Hedra";
+      if (titleEl) titleEl.textContent = track.trackName || "Angels Brought Me Here";
+      if (artistEl) artistEl.textContent = track.artistName || "Guy Sebastian";
 
       if (artwork && artImg) {
         artImg.src = artwork;
@@ -419,7 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const exact = tracks.find(
         (t) =>
           typeof t.trackName === "string" &&
-          t.trackName.trim().toLowerCase() === "somebody's pleasure" &&
+          t.trackName.trim().toLowerCase() === "angels brought me here" &&
           !VARIANT_PATTERN.test(t.trackName)
       );
       if (exact) return exact;
