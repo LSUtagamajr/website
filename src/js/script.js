@@ -266,9 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const CHOSEN_TRACK_QUERY = "Guy Sebastian Angels Brought Me Here";
 
-    const TARGET_SECONDS = 90; 
-    let clipDuration = 0; 
-    let loopsCompleted = 0;
+    let clipDuration = 0;
 
     const showToast = (text, background) => {
       if (typeof Toastify === "undefined") return;
@@ -298,44 +296,41 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentTimeEl) currentTimeEl.textContent = "0:00";
     };
 
+    const FADE_OUT_SECONDS = 3;
+
     const stopPreview = () => {
       audio.pause();
       audio.currentTime = 0;
-      loopsCompleted = 0;
+      audio.volume = 1;
       setPlayingState(false);
       resetProgress();
     };
-
-    const cumulativeElapsed = () =>
-      clipDuration > 0 ? loopsCompleted * clipDuration + audio.currentTime : audio.currentTime;
 
     audio.addEventListener("loadedmetadata", () => {
       if (isFinite(audio.duration) && audio.duration > 0) {
         clipDuration = audio.duration;
       }
-      if (timeLabelEl) timeLabelEl.textContent = `${formatTime(TARGET_SECONDS)} playback`;
+      if (timeLabelEl) timeLabelEl.textContent = `${formatTime(clipDuration)} playback`;
     });
 
     audio.addEventListener("timeupdate", () => {
-      const elapsed = cumulativeElapsed();
-      const pct = Math.min(100, (elapsed / TARGET_SECONDS) * 100);
+      const elapsed = audio.currentTime;
+      const pct = clipDuration > 0 ? Math.min(100, (elapsed / clipDuration) * 100) : 0;
       if (progressFill) progressFill.style.width = `${pct}%`;
       if (currentTimeEl) currentTimeEl.textContent = formatTime(elapsed);
 
-      if (elapsed >= TARGET_SECONDS) {
-        stopPreview();
+      if (clipDuration > 0) {
+        const remaining = clipDuration - elapsed;
+        if (remaining <= FADE_OUT_SECONDS) {
+          audio.volume = Math.max(0, Math.min(1, remaining / FADE_OUT_SECONDS));
+        } else if (audio.volume < 1) {
+          audio.volume = 1;
+        }
       }
     });
 
     audio.addEventListener("ended", () => {
-      
-      if (cumulativeElapsed() < TARGET_SECONDS - 0.25 && clipDuration > 0) {
-        loopsCompleted += 1;
-        audio.currentTime = 0;
-        audio.play().catch(() => stopPreview());
-      } else {
-        stopPreview();
-      }
+      stopPreview();
     });
 
     if (progressTrack) {
@@ -343,9 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (audio.paused || !audio.src || clipDuration <= 0) return;
         const rect = progressTrack.getBoundingClientRect();
         const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
-        const targetElapsed = ratio * TARGET_SECONDS;
-        loopsCompleted = Math.floor(targetElapsed / clipDuration);
-        audio.currentTime = targetElapsed - loopsCompleted * clipDuration;
+        audio.currentTime = ratio * clipDuration;
       });
     }
 
@@ -396,8 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       clipDuration = 0;
-      loopsCompleted = 0;
-      if (timeLabelEl) timeLabelEl.textContent = `${formatTime(TARGET_SECONDS)} playback`;
+      if (timeLabelEl) timeLabelEl.textContent = "Preview";
 
       if (track.previewUrl) {
         audio.src = track.previewUrl;
