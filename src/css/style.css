@@ -914,11 +914,24 @@ section {
   display: none;
 }
 
+.music-play-btn .icon-loading {
+  display: none;
+}
+
 .music-card.is-playing .music-play-btn .icon-play {
   display: none;
 }
 
 .music-card.is-playing .music-play-btn .icon-pause {
+  display: block;
+}
+
+.music-card.is-loading .music-play-btn .icon-play,
+.music-card.is-loading .music-play-btn .icon-pause {
+  display: none;
+}
+
+.music-card.is-loading .music-play-btn .icon-loading {
   display: block;
 }
 

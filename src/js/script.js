@@ -119,7 +119,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle("visible", entry.isIntersecting);
+          // Reveal once and leave it revealed — don't hide content again
+          // just because it scrolled out of view (that was making whole
+          // sections go blank when scrolling back up, especially on mobile).
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
         });
       },
       { root: null, threshold: 0.02, rootMargin: "0px 0px -20px 0px" }
@@ -129,6 +135,10 @@ document.addEventListener("DOMContentLoaded", () => {
       el.classList.add("scroll-reveal");
       revealObserver.observe(el);
     });
+  } else {
+    // No IntersectionObserver support — show content immediately rather
+    // than leaving it permanently at opacity: 0.
+    revealElements.forEach((el) => el.classList.add("visible"));
   }
 
   
@@ -296,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         trackName: "Lifetime (Reimagined)",
         artistName: "Ben and Ben",
-        previewUrl: "src/assets/audio/Lifetime (Reimagined).wav",
+        previewUrl: "src/assets/audio/Lifetime (Reimagined).mp3",
         artworkUrl: "src/assets/images/lifetime.png",
       },
       {
@@ -306,10 +316,10 @@ document.addEventListener("DOMContentLoaded", () => {
         artworkUrl: "src/assets/images/your universe.png",
       },
       {
-        trackName: "Libu-Libong Buwan",
-        artistName: "Kyle Raphael",
-        previewUrl: "src/assets/audio/Libu-Libong Buwan (Uuwian).mp3",
-        artworkUrl: "src/assets/images/libu-libong buwan.png",
+        trackName: "Dream Girl (Acoustic Version)",
+        artistName: "Kolohe Kai",
+        previewUrl: "src/assets/audio/Dream Girl (Acoustic Version).mp3",
+        artworkUrl: "src/assets/images/dream girl.jpg",
       },
     ];
 
@@ -343,6 +353,16 @@ document.addEventListener("DOMContentLoaded", () => {
         `${isPlaying ? "Pause" : "Play"} ${TRACKS[currentIndex].trackName}`
       );
     };
+
+    const setLoadingState = (isLoading) => {
+      musicCard.classList.toggle("is-loading", isLoading);
+    };
+
+    // Surface buffering as a spinner instead of a silent, unresponsive button.
+    audio.addEventListener("waiting", () => setLoadingState(true));
+    audio.addEventListener("playing", () => setLoadingState(false));
+    audio.addEventListener("canplay", () => setLoadingState(false));
+    audio.addEventListener("pause", () => setLoadingState(false));
 
     const resetProgress = () => {
       if (progressFill) progressFill.style.width = "0%";
@@ -405,6 +425,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    let isTogglingPreview = false;
+
     const togglePreview = async () => {
       if (!audio.src) {
         showToast("This track isn't available to play right now.", "#dc2626");
@@ -416,12 +438,22 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      if (isTogglingPreview) return;
+      isTogglingPreview = true;
+
+      // readyState < 3 (HAVE_FUTURE_DATA) means playback will need to buffer first —
+      // show the spinner right away instead of waiting for the "waiting" event to fire.
+      if (audio.readyState < 3) setLoadingState(true);
+
       try {
         await audio.play();
         setPlayingState(true);
       } catch (err) {
         setPlayingState(false);
         showToast("Couldn't play the preview — please try again.", "#dc2626");
+      } finally {
+        setLoadingState(false);
+        isTogglingPreview = false;
       }
     };
 
