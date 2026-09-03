@@ -253,6 +253,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (musicCard) {
     const audio = document.querySelector("#musicAudio");
     const playBtn = document.querySelector("#musicPlayBtn");
+    const prevBtn = document.querySelector("#musicPrevBtn");
+    const nextBtn = document.querySelector("#musicNextBtn");
     const progressFill = document.querySelector("#musicProgressFill");
     const progressTrack = document.querySelector("#musicProgressTrack");
     const currentTimeEl = document.querySelector("#musicCurrentTime");
@@ -262,10 +264,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const artistEl = document.querySelector("#musicArtist");
     const artImg = document.querySelector("#musicArtImg");
     const artFallback = document.querySelector("#musicArtFallback");
+    const playlistEl = document.querySelector("#musicPlaylist");
 
-    
-    const CHOSEN_TRACK_QUERY = "Guy Sebastian Angels Brought Me Here";
+    // Playlist — add real tracks here as you get the audio files + cover art.
+    // previewUrl / artworkUrl left empty = shown as "coming soon" (not playable) placeholders.
+    const TRACKS = [
+      {
+        trackName: "Linger",
+        artistName: "Social Repose",
+        previewUrl: "src/assets/audio/Linger.mp3",
+        artworkUrl: "src/assets/images/linger.jpg",
+      },
+      {
+        trackName: "Last Night on Earth",
+        artistName: "Green Day",
+        previewUrl: "src/assets/audio/Last Night on Earth.mp3",
+        artworkUrl: "src/assets/images/last-night-on-earth.jpg",
+      },
+      {
+        trackName: "End of Beginning",
+        artistName: "AMH",
+        previewUrl: "src/assets/audio/End of Beginning.mp3",
+        artworkUrl: "src/assets/images/end of beginning.jpg",
+      },
+      {
+        trackName: "Invisible String",
+        artistName: "Taylor Swift",
+        previewUrl: "src/assets/audio/invisible string (the long pond studio sessions).mp3",
+        artworkUrl: "src/assets/images/invisible string.webp",
+      },
+      {
+        trackName: "Lifetime (Reimagined)",
+        artistName: "Ben and Ben",
+        previewUrl: "src/assets/audio/Lifetime (Reimagined).wav",
+        artworkUrl: "src/assets/images/lifetime.png",
+      },
+      {
+        trackName: "Your Universe",
+        artistName: "Rico Blanco",
+        previewUrl: "src/assets/audio/Your Universe (Acoustic).mp3",
+        artworkUrl: "src/assets/images/your universe.png",
+      },
+      {
+        trackName: "Libu-Libong Buwan",
+        artistName: "Kyle Raphael",
+        previewUrl: "src/assets/audio/Libu-Libong Buwan (Uuwian).mp3",
+        artworkUrl: "src/assets/images/libu-libong buwan.png",
+      },
+    ];
 
+    let currentIndex = 0;
     let clipDuration = 0;
 
     const showToast = (text, background) => {
@@ -289,6 +337,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const setPlayingState = (isPlaying) => {
       musicCard.classList.toggle("is-playing", isPlaying);
+      playBtn.setAttribute("aria-pressed", String(isPlaying));
+      playBtn.setAttribute(
+        "aria-label",
+        `${isPlaying ? "Pause" : "Play"} ${TRACKS[currentIndex].trackName}`
+      );
     };
 
     const resetProgress = () => {
@@ -298,6 +351,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const FADE_OUT_SECONDS = 3;
 
+    // Pauses playback but keeps the current position (used by the play/pause button).
+    const pausePreview = () => {
+      audio.pause();
+      audio.volume = 1;
+      setPlayingState(false);
+    };
+
+    // Fully stops playback and rewinds to the start (used on track end / track change).
     const stopPreview = () => {
       audio.pause();
       audio.currentTime = 0;
@@ -329,8 +390,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    // Track finished on its own — advance to the next available track and keep playing.
     audio.addEventListener("ended", () => {
       stopPreview();
+      goToTrack(currentIndex + 1, { autoplay: true, wrap: true });
     });
 
     if (progressTrack) {
@@ -349,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (!audio.paused) {
-        stopPreview();
+        pausePreview();
         return;
       }
 
@@ -362,25 +425,70 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    playBtn.addEventListener("click", () => {
+    // Only the dedicated play/pause button controls playback now.
+    playBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
       togglePreview();
     });
 
-    
     const upscaleArtwork = (url) =>
       url ? url.replace(/\/\d+x\d+bb\.(jpg|png)/, "/300x300bb.$1") : "";
 
-    const loadTrack = (track) => {
+    const renderPlaylist = () => {
+      if (!playlistEl) return;
+      playlistEl.innerHTML = "";
+      TRACKS.forEach((track, index) => {
+        const item = document.createElement("button");
+        item.type = "button";
+        item.className = "music-playlist-item";
+        item.classList.toggle("is-active", index === currentIndex);
+        item.classList.toggle("is-unavailable", !track.previewUrl);
+        item.setAttribute(
+          "aria-label",
+          `${track.trackName} by ${track.artistName}${
+            track.previewUrl ? "" : " (not available yet)"
+          }`
+        );
+
+        const artwork = upscaleArtwork(track.artworkUrl);
+        if (artwork) {
+          const img = document.createElement("img");
+          img.src = artwork;
+          img.alt = "";
+          item.appendChild(img);
+        } else {
+          const icon = document.createElement("i");
+          icon.className = "fa-solid fa-music";
+          item.appendChild(icon);
+        }
+
+        item.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (!track.previewUrl) {
+            showToast("This track isn't available to play right now.", "#dc2626");
+            return;
+          }
+          goToTrack(index, { autoplay: true });
+        });
+
+        playlistEl.appendChild(item);
+      });
+    };
+
+    const loadTrack = (index, { autoplay = false } = {}) => {
+      currentIndex = ((index % TRACKS.length) + TRACKS.length) % TRACKS.length;
+      const track = TRACKS[currentIndex];
+
       stopPreview();
 
-      const artwork = upscaleArtwork(track.artworkUrl100);
+      const artwork = upscaleArtwork(track.artworkUrl);
 
-      if (titleEl) titleEl.textContent = track.trackName || "Angels Brought Me Here";
-      if (artistEl) artistEl.textContent = track.artistName || "Guy Sebastian";
+      if (titleEl) titleEl.textContent = track.trackName;
+      if (artistEl) artistEl.textContent = track.artistName;
 
       if (artwork && artImg) {
         artImg.src = artwork;
-        artImg.alt = `${track.trackName || "Track"} artwork`;
+        artImg.alt = `${track.trackName} artwork`;
         artImg.hidden = false;
         if (artFallback) artFallback.style.display = "none";
       } else if (artImg && artFallback) {
@@ -399,48 +507,35 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.removeAttribute("src");
         playBtn.disabled = true;
       }
-    };
 
-    
-    playBtn.disabled = true;
+      renderPlaylist();
 
-    
-    const VARIANT_PATTERN = /sped up|speed up|slowed|slow(ed)? reverb|remix|instrumental|karaoke|cover|nightcore|8d\b/i;
-
-    const pickBestMatch = (tracks) => {
-      const exact = tracks.find(
-        (t) =>
-          typeof t.trackName === "string" &&
-          t.trackName.trim().toLowerCase() === "angels brought me here" &&
-          !VARIANT_PATTERN.test(t.trackName)
-      );
-      if (exact) return exact;
-
-      const noVariant = tracks.find(
-        (t) => typeof t.trackName === "string" && !VARIANT_PATTERN.test(t.trackName)
-      );
-      if (noVariant) return noVariant;
-
-      return tracks[0];
-    };
-
-    (async () => {
-      try {
-        const url = `https://itunes.apple.com/search?term=${encodeURIComponent(
-          CHOSEN_TRACK_QUERY
-        )}&media=music&entity=song&limit=15`;
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("iTunes request failed");
-        const data = await response.json();
-        if (Array.isArray(data.results) && data.results.length > 0) {
-          loadTrack(pickBestMatch(data.results));
-        } else {
-          playBtn.disabled = true;
-        }
-      } catch (err) {
-        playBtn.disabled = true;
+      if (autoplay && track.previewUrl) {
+        togglePreview();
       }
-    })();
+    };
+
+    function goToTrack(index, { autoplay = false, wrap = false } = {}) {
+      if (!wrap && (index < 0 || index >= TRACKS.length)) return;
+      loadTrack(index, { autoplay });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        goToTrack(currentIndex - 1, { autoplay: !audio.paused, wrap: true });
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        goToTrack(currentIndex + 1, { autoplay: !audio.paused, wrap: true });
+      });
+    }
+
+    // Card loads with the first track ready (paused) — playback only starts once you hit play.
+    loadTrack(0);
   }
 
   

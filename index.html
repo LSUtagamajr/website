@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -228,7 +228,7 @@
         <div class="about-grid">
           <div class="about-info-block">
             <p class="eyebrow">About Me</p>
-            <h2 class="bio-name">Rhodell Tagama</h2>
+            <h2 class="bio-name">Rhodell A. Tagama Jr.</h2>
             <p class="bio-subtitle">BSIT Student &amp; Developer</p>
 
             <div class="bio-text">
@@ -280,8 +280,6 @@
 
             <div class="music-card-wrap">
               <div class="music-card" id="musicCard">
-                <div class="music-card-halo" aria-hidden="true"></div>
-
                 <div class="music-card-top">
                   <div class="music-art" id="musicArt">
                     <div class="music-art-gradient"></div>
@@ -295,20 +293,37 @@
                     <span class="music-eyebrow">
                       <i class="fa-brands fa-itunes-note"></i> Now Playing
                     </span>
-                    <h3 class="music-title" id="musicTitle">
-                      Angels Brought Me Here
-                    </h3>
-                    <p class="music-artist" id="musicArtist">Guy Sebastian</p>
+                    <h3 class="music-title" id="musicTitle"></h3>
+                    <p class="music-artist" id="musicArtist"></p>
                   </div>
-                  <button
-                    class="music-play-btn"
-                    id="musicPlayBtn"
-                    type="button"
-                    aria-label="Play 30 second preview"
-                  >
-                    <i class="fa-solid fa-play icon-play"></i>
-                    <i class="fa-solid fa-pause icon-pause"></i>
-                  </button>
+                  <div class="music-controls">
+                    <button
+                      class="music-nav-btn"
+                      id="musicPrevBtn"
+                      type="button"
+                      aria-label="Previous track"
+                    >
+                      <i class="fa-solid fa-backward-step"></i>
+                    </button>
+                    <button
+                      class="music-play-btn"
+                      id="musicPlayBtn"
+                      type="button"
+                      aria-label="Play"
+                      aria-pressed="false"
+                    >
+                      <i class="fa-solid fa-play icon-play"></i>
+                      <i class="fa-solid fa-pause icon-pause"></i>
+                    </button>
+                    <button
+                      class="music-nav-btn"
+                      id="musicNextBtn"
+                      type="button"
+                      aria-label="Next track"
+                    >
+                      <i class="fa-solid fa-forward-step"></i>
+                    </button>
+                  </div>
                 </div>
 
                 <div class="music-progress" id="musicProgressTrack">
@@ -316,7 +331,10 @@
                 </div>
                 <div class="music-time-row">
                   <span id="musicCurrentTime">0:00</span>
+                  <span class="music-time-label" id="musicTimeLabel"></span>
                 </div>
+
+                <div class="music-playlist" id="musicPlaylist"></div>
 
                 <audio id="musicAudio" preload="none"></audio>
               </div>
